@@ -3,7 +3,7 @@ def caesar_cipher(string, shift)
     # only convert if letter
     if char.ord.between?(65, 90) || char.ord.between?(97, 122)
       char.ord
-    else 
+    else
       char
     end
   end
@@ -15,22 +15,22 @@ def caesar_cipher(string, shift)
       # if upper case
       if int.between?(65, 90)
         # can't shift more than the letters of the alphabet
-        shift = shift % 26
+        shift %= 26
         # wrap around
-        if int + shift > 90
-          int = ((int + shift) % 91) + 65
-          # no need to wrap around
-        else 
-          int = ((int + shift) % 91)
-        end
-        
+        int = if int + shift > 90
+                ((int + shift) % 91) + 65
+              # no need to wrap around
+              else
+                ((int + shift) % 91)
+              end
+
       elsif int.between?(97, 122)
-        shift = shift % 26
-        if int + shift > 122
-          int = ((int + shift) % 123) + 97
-        else 
-          int = ((int + shift) % 123)
-        end
+        shift %= 26
+        int = if int + shift > 122
+                ((int + shift) % 123) + 97
+              else
+                ((int + shift) % 123)
+              end
       end
     else
       int
@@ -48,11 +48,11 @@ def caesar_cipher(string, shift)
     end
   end
 
-  cipher_string = cipher_string.join("")
+  cipher_string = cipher_string.join('')
   # p cipher_string
 end
 
-caesar_cipher("What a string!", 5)
+caesar_cipher('What a string!', 5)
 # caesar_cipher("AaZz", 1)
 # caesar_cipher("GDKKN", 27)
 # caesar_cipher("AZ!!!*(&#*&,.,,.)AKGJALKBJ", 1)
