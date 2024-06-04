@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def caesar_cipher(string, shift)
   ord_arr = string.split('').map do |char|
     # only convert if letter
@@ -17,20 +19,20 @@ def caesar_cipher(string, shift)
         # can't shift more than the letters of the alphabet
         shift %= 26
         # wrap around
-        int = if int + shift > 90
-                ((int + shift) % 91) + 65
-              # no need to wrap around
-              else
-                ((int + shift) % 91)
-              end
+        if int + shift > 90
+          ((int + shift) % 91) + 65
+        # no need to wrap around
+        else
+          ((int + shift) % 91)
+        end
 
       elsif int.between?(97, 122)
         shift %= 26
-        int = if int + shift > 122
-                ((int + shift) % 123) + 97
-              else
-                ((int + shift) % 123)
-              end
+        if int + shift > 122
+          ((int + shift) % 123) + 97
+        else
+          ((int + shift) % 123)
+        end
       end
     else
       int
@@ -48,7 +50,7 @@ def caesar_cipher(string, shift)
     end
   end
 
-  cipher_string = cipher_string.join('')
+  cipher_string.join('')
   # p cipher_string
 end
 
